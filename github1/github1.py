@@ -108,10 +108,9 @@ class Harvester:
         if response.status_code == 200:
             print(f"successful read from github repository {repository}")
             rows = self.parser(response.json(), auth_tuple)
+            self.writer(f"{repository}.csv", rows)
         else:
             print(f"bad status {response.status_code} from github repository {repository}")
-
-        self.writer(f"{repository}.csv", rows)
 
 print("start")
 
