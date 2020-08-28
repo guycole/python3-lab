@@ -29,7 +29,7 @@ class Harvester:
             for row in response.json():
                 results.append(row['name'])
 
-        # NOTE: does not return all the expected repositories (only 30 for scoop, vs 200 promised
+        # NOTE: only returns 30 rows, is it pagination?
         return results
 
     def comment(self, buffer):
@@ -60,6 +60,7 @@ class Harvester:
         """
         rows = []
         for candidate in buffer:
+            print(candidate)
             result = {
                 'number': candidate['number'],
                 'title': candidate['title'],
@@ -200,7 +201,10 @@ if __name__ == "__main__":
     print("main")
 
     harvester = Harvester()
-    harvester.execute("account", "password", "owner", "repository")
+#    harvester.execute("account", "password", "owner", "repository")
+#    harvester.execute("guycole@gmail.com", "018f0ab725a9276ceb1bb5e9ca28793efe60f2c2", "shastrax", "jaded_traveler")
+    harvester.execute("guycole@gmail.com", "018f0ab725a9276ceb1bb5e9ca28793efe60f2c2", "TakeScoop", "api")
+#    harvester.execute("guycole@gmail.com", "018f0ab725a9276ceb1bb5e9ca28793efe60f2c2", "TakeScoop", "aether")
 
 print("stop")
 

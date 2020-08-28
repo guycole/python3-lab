@@ -106,3 +106,5 @@ venv.bak/
 # IntelliJ
 *.iml
 .idea/
+
+.DS_Store

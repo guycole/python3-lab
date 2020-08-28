@@ -1,0 +1,9 @@
+TS1:GET:https://bitmex.com/volumes:1000
+TS2:GET:https://bitmex.com/trader/joe:500
+TS3:POST:https://bitmex.com/trade/buy:10
+TS4:POST:https://bitmex.com/trade/sell:10
+TS5:GET:https://bitmex.com/trader/joe/settings:2000
+TS6:GET:http://google.com?query=“Best places to work”:10000
+TS7:GET:http://k8s.io/apis/:20
+TS8:GET:http://aaaaaa/:20
+TS9:GET:http://zzzzzz/:20
