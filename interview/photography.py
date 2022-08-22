@@ -13,24 +13,6 @@ def calculateNdxLimit(origin: int, distance: int, max: int) -> tuple:
 
     return (start, stop)
 
-def getArtisticPhotographCount2(N: int, C: str, X: int, Y: int) -> int:
-    print(C)
-
-    counter = 0
-    
-    a_ndx = C.find('A')
-    while a_ndx >= 0:        
-        print(f"A {a_ndx}")
-        if a_ndx < 0: # all A have been evaluated
-            return counter
-
-        (start, stop) = calculateNdxLimit(a_ndx, Y, len(C))
-        print(C[start:stop+1])
-
-        a_ndx = C.find('A', a_ndx+1)
-
-    return counter
-
 def getArtisticPhotographCount(N: int, C: str, X: int, Y: int) -> int:
     print(C)
 
