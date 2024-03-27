@@ -7,11 +7,12 @@ MAX_SLOTS = 8
 schedule = []
 
 def setup_schedule():
+    schedule.clear()
     for ndx in range(MAX_SLOTS):
         schedule.append(False)
 
 def matcher(start, duration: int) -> bool:
-    if start + duration >= MAX_SLOTS:
+    if start + duration > MAX_SLOTS:
         return False
     
     for ndx in range(start, start + duration):
@@ -19,6 +20,7 @@ def matcher(start, duration: int) -> bool:
             return False
         
     for ndx in range(start, start + duration):
+        print(f"assign:{ndx}")
         schedule[ndx] = True
 
     return True
@@ -29,7 +31,6 @@ def schedule_room(duration:int) -> bool:
             if matcher(ndx1, duration):
                 return True
 
-    print("schedule_room")
     return False
 
 if __name__ == '__main__':
@@ -47,6 +48,10 @@ if __name__ == '__main__':
     schedule[1] = False
     print(schedule_room(2))
     print(schedule)
+
+#    setup_schedule()
+#    print(schedule_room(8))
+#    print(schedule)
 
 #;;; Local Variables: ***
 #;;; mode:python ***
