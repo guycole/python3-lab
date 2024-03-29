@@ -1,6 +1,6 @@
 #
-# Title: squares.py
-# Description: 
+# Title: subsquares.py
+# Description: given a large square, test if array of smaller squares can be cut
 #
 # 0 | 0 | 0
 # 0 | 0 | 0

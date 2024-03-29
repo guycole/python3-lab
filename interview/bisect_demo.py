@@ -1,9 +1,6 @@
 #
 # Title:bisect.py
 # Description: Demonstrate bisection module.
-# Development Environment:Ubuntu 18.04.3 LTS (Bionic Beaver)/Python 3.6.8
-# Legalise:Copyright (C) 2022 Miserable Bastards, INC.
-# Author:G.S. Cole (guycole at gmail dot com)
 #
 import bisect
 
