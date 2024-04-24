@@ -7,6 +7,7 @@ import json
 
 def get_cars():
     cars = '{"Beetle": "ce1K9WtMd5wXmAdb1", "BoltyMcBoltface": "Az6xYDIYdUA3I2EXq", "Penguin": "Kefkjfe39KJKf3234djkl"}'
+#    print(type(cars)) # string
     return json.loads(cars)
 
 def get_battery_level(vin):
@@ -29,6 +30,7 @@ if __name__ == '__main__':
 
     cars = get_cars()
     for car in cars:
+        # associate car name and battery level
         car_batteries[car] = get_battery_level(cars[car])
 
     for battery_level in reversed(range(5)):
