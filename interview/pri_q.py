@@ -3,6 +3,7 @@
 # Description: priority queue
 #
 
+# heapq O(logn)
 import heapq
 
 # read as priority, name 
@@ -10,6 +11,7 @@ students = [(5,'Rina'),(1,'Anish'),(3,'Moana'),(2,'Cathy'),(4,'Lucy')]
 print(students)
 
 heapq.heapify(students) 
+# do not trust this, iterate and pop
 print(students)
  
 for ndx in range(5):
