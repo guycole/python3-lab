@@ -1,6 +1,7 @@
 #
 # Title:google1.py
 # Description: Google interview latency tree
+# Build tree and discover max latency
 #
 
 class Node:

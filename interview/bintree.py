@@ -1,13 +1,28 @@
+# binary tree example
+# insertion is O(h) where h is the height of the tree
+# search is O(log n) for balanced tree
+#
+
 class Node:
     def __init__(self, value):
         self.left = None
         self.right = None
         self.value = value
 
+    def __eq__(self, other):
+        try:
+            return (self.value) == (other.value)
+        except AttributeError:
+            return NotImplemented
+
+    def __hash__(self):
+        return hash(self.value)
+
+    def __repr__(self):
+        return f"{self.left} {self.value} {self.right}"
+    
     def __str__(self):
         return f"{self.value}"
-#        return f"{self.left} {self.value} {self.right}"
-
 
 class BinTree:
     def __init__(self):
@@ -71,6 +86,15 @@ class BinTree:
 
         print(current.value)
 
+    def inorder(self, current):
+        if current.left is not None:
+            self.inorder(current.left)
+
+        print(current.value)
+
+        if current.right is not None:
+            self.inorder(current.right)
+
 print('start')
 if __name__ == '__main__':
     print('main')
@@ -79,16 +103,20 @@ if __name__ == '__main__':
     bintree.insert(5)
     bintree.insert(3)
     bintree.insert(1)
+    bintree.insert(9)
     bintree.insert(7)
     bintree.insert(4)
     print(bintree)
 
     xx = bintree.find(7)
-    print("-x-x-x-")
 
+    print("-x- preorder -x-")
     bintree.preorder(bintree.root)
 
-    print("-x-x-x-")
+    print("-x- postorder -x-")
     bintree.postorder(bintree.root)
+
+    print("-x- inorder -x-")
+    bintree.inorder(bintree.root)
 
 print('stop')

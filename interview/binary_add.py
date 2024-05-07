@@ -1,6 +1,6 @@
 #
-# Title:benchly.py
-# Description: benchly interview, html formatter
+# Title:binary_add.py
+# Description: add two binary numbers
 #
 # 1618 1634
 def addBinary(a: str, b: str) -> str:

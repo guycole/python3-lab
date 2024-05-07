@@ -1,6 +1,6 @@
 #
 # Title:bisect.py
-# Description: Demonstrate bisection module.
+# Description: Demonstrate bisection module (big sorted list).
 #
 import bisect
 
