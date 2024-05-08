@@ -2,7 +2,11 @@
 # Title:iterator1.py
 # Description: iterator demo
 #
+# https://realpython.com/python-iterators-iterables/
+# FibonacciIterator example
+#
 
+# SequenceIterator
 class BoundedRepeater:
     def __init__(self, value, maxx):
         self.maxx = maxx
