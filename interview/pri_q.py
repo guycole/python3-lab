@@ -2,8 +2,10 @@
 # Title:pri_q.py
 # Description: priority queue
 #
+# https://realpython.com/python-heapq-module/
+#
 
-# heapq O(logn)
+# heapq O(log n)
 import heapq
 
 # read as priority, name 
@@ -11,13 +13,12 @@ students = [(5,'Rina'),(1,'Anish'),(3,'Moana'),(2,'Cathy'),(4,'Lucy')]
 print(students)
 
 heapq.heapify(students) 
-# do not trust this, iterate and pop
-print(students)
- 
-for ndx in range(5):
-	temp = students.pop(0) # pull from left for priority 1 (right for max)
-	heapq.heapify(students) 
-	print(temp)
+
+print(heapq.heappop(students))
+print(heapq.heappop(students))
+print(heapq.heappop(students))
+print(heapq.heappop(students))
+print(heapq.heappop(students))
 
 print(students)
 

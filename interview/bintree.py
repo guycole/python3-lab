@@ -1,6 +1,10 @@
 # binary tree example
+#
+# balanced vs unbalanced, no duplicate keys
 # insertion is O(h) where h is the height of the tree
 # search is O(log n) for balanced tree
+#
+# there is a "binarytree" module
 #
 
 class Node:

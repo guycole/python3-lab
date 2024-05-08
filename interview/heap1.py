@@ -1,7 +1,11 @@
 #
 # Title: heap1.py
 # Description: heap as an array, not use python libs
+# heap is a complete bintree, always balanced 
+# heap allows duplicates
 #
+# https://realpython.com/python-heapq-module/
+# https://www.baeldung.com/cs/heap-vs-binary-search-tree
 
 def insert(fresh, candidates):
     print(candidates)
