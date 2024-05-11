@@ -18,7 +18,7 @@ class Solution:
             elements.clear()
             elements[tokens[ndx1]] = ndx1
             for ndx2 in range(ndx1+1, len(tokens)):
-                print(f"current indices {ndx1} {tokens[ndx1]} {ndx2} {tokens[ndx2]}")
+#                print(f"current indices {ndx1} {tokens[ndx1]} {ndx2} {tokens[ndx2]}")
                 if tokens[ndx2] in elements:
                     # repeater 
                     if max_substring_length < len(elements):
@@ -37,6 +37,7 @@ if __name__ == '__main__':
 
     solution = Solution()
     print(solution.execute("abcdeab"))
+    print(solution.execute("abcdeabcdefab"))
     print(solution.execute("abcabcbb"))
 
 #;;; Local Variables: ***
