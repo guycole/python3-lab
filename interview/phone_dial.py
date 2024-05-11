@@ -16,15 +16,17 @@ class Solution:
 
         limit = []
         total = 1
-        for ndx1 in candidates:
-            limit.append(len(ndx1))
-            total = total * len(ndx1) 
+        for candidate in candidates:
+            limit.append(len(candidate))
+            total = total * len(candidate) 
 #        print(limit)
 #        print(total)
 
         current = [0]*len(candidates)
 
         indices = []
+        indices.append(current.copy())
+
         for ndx1 in range(total):
             indices.append(current.copy())
     
