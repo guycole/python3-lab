@@ -21,7 +21,6 @@ def get_battery_level(vin):
 
 def battery_level_filter(candidates, level):
     filtered = dict((k, v) for k, v in candidates.items() if v == level)
-    print(filtered)
     return list(filtered)
 
 if __name__ == '__main__':
