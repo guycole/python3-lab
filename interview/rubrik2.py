@@ -9,9 +9,7 @@ from typing import List
 
 class Solution:
 
-    def execute(self, x: int, y: int, matrix: List) -> bool:
-        print("execute")
-
+    def execute(self, x: int, y: int, matrix: List[List[int]]) -> bool:
         for row in range(len(matrix)-y+1):
             for column in range(len(matrix[row])-x+1):
                 #print(f"{row} {column}")
@@ -68,7 +66,7 @@ if __name__ == '__main__':
     matrix.append(['*', '#', '*', '*'])
     matrix.append(['*', '*', '#', '*'])
     matrix.append(['*', '*', '*', '#'])
-    print(solution.execute(3, 3, matrix))
+    print(solution.execute(2, 2, matrix))
 
     matrix.clear()
     matrix.append(['*', '*', '*', '*'])
