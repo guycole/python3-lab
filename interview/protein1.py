@@ -1,10 +1,10 @@
 #
-# Title: protein.py
+# Title: protein1.py
 # Description: generate protein sequences
 # 
 #https://leetcode.com/discuss/interview-question/3229839/Benchling-or-Phone-or-Generate-Protein
 #https://leetcode.com/discuss/interview-question/1386125/Benchling-Phone-interview
-
+#
 from typing import Dict, List
 
 class Solution:
