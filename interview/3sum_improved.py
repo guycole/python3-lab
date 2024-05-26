@@ -19,15 +19,12 @@ class Solution:
 
         for ndx1 in range(len(candidates)):
             for ndx2 in range(ndx1+1, len(candidates)):
-                print(f"{ndx1} {ndx2}")
                 delta = target - candidates[ndx1] - candidates[ndx2]
                 if delta in memento.keys():
                     results[0] = ndx1
                     results[1] = ndx2
                     results[2] = memento[delta]
                     return results
-
-        print(memento)
 
         return results
 
