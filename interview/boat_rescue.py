@@ -8,11 +8,11 @@ from typing import List
 
 
 class Solution:
-    # O(n log n)
+    # O(n log n) because sorted()
     def execute(self, limit: int, candidates: List[int]) -> int:
         print("execute")
 
-        candidates2 = sorted(candidates)
+        candidates2 = sorted(candidates) # O(n log n)
         result = 0
 
         left_ndx = 0
@@ -22,9 +22,11 @@ class Solution:
 
         while right_ndx >= left_ndx:
             if candidates2[left_ndx] + candidates2[right_ndx] >= limit:
+                print("one person")
                 result = result+1
                 right_ndx = right_ndx-1
             else:
+                print("two people")
                 result = result+1
                 left_ndx = left_ndx+1
                 right_ndx = right_ndx-1
