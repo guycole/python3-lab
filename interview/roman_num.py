@@ -1,8 +1,69 @@
 #
-# Title: topk.py
-# Description: discover the top k values
+# Title: roman_num.py
+# Description: roman number conversion
 #
 class Solution:
+    def intToRoman(self, num: int) -> str:
+        print(num)
+        result = ""
+
+        divisor = 1000
+
+        while num > 0:
+            divdiv = num // divisor
+            modmod = num % divisor
+            print(f"divisor: {divisor} divdiv: {divdiv}, modmod: {modmod}")
+
+            if divisor == 1000:
+                result = result + "M" * divdiv
+            elif divisor == 100:
+                if divdiv == 9:
+                    result = result + "CM"
+                elif divdiv == 4:
+                    result = result + "CD"
+                else:
+                    if divdiv >= 5:
+                        result = result + "D"
+                        divdiv = divdiv - 5
+                    result = result + "C" * divdiv
+            elif divisor == 10:
+                if divdiv == 9:
+                    result = result + "XC"
+                elif divdiv == 4:
+                    result = result + "XL"
+                else:
+                    if divdiv >= 5:
+                        result = result + "L"
+                        divdiv = divdiv - 5
+                    result = result + "X" * divdiv
+            else:
+                if divdiv == 9:
+                    result = result + "IX"
+                elif divdiv == 4:
+                    result = result + "IV"
+                else:
+                    if divdiv >= 5:
+                        result = result + "V"
+                        divdiv = divdiv - 5
+                    result = result + "I" * divdiv
+
+            print(f"result: {result}") 
+
+            divisor = divisor // 10
+            num = modmod
+
+
+
+#        candidates = []
+
+#        temp = num
+#        while temp > 0:
+#        t2 = temp // 10
+#        t3 = temp % 10
+#        print(f"t2: {t2}, t3: {t3}")
+
+        return result
+
     # 1223
     def romanToInt(self, ss: str) -> int:
         result = 0
@@ -65,6 +126,10 @@ if __name__ == '__main__':
 
     # 1994
     result = ss.romanToInt("MCMXCIV")
+    print(result)
+
+    # 
+    result = ss.intToRoman(3749)
     print(result)
 
 #;;; Local Variables: ***
