@@ -12,7 +12,7 @@ class Solution:
         while num > 0:
             divdiv = num // divisor
             modmod = num % divisor
-            print(f"divisor: {divisor} divdiv: {divdiv}, modmod: {modmod}")
+            #print(f"divisor: {divisor} divdiv: {divdiv}, modmod: {modmod}")
 
             if divisor == 1000:
                 result = result + "M" * divdiv
@@ -47,20 +47,10 @@ class Solution:
                         divdiv = divdiv - 5
                     result = result + "I" * divdiv
 
-            print(f"result: {result}") 
+            #print(f"result: {result}") 
 
             divisor = divisor // 10
             num = modmod
-
-
-
-#        candidates = []
-
-#        temp = num
-#        while temp > 0:
-#        t2 = temp // 10
-#        t3 = temp % 10
-#        print(f"t2: {t2}, t3: {t3}")
 
         return result
 
