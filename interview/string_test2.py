@@ -22,6 +22,10 @@ class Solution:
 #                print(arg1[ndx1:ndx2+1])
                 candidates.append(arg1[ndx1:ndx2+1])
 
+
+        print(arg1)
+        print(candidates)
+
         winner_string = None
         for temp in candidates:
             if len(temp) < len(arg2):

@@ -1,6 +1,6 @@
 #
 # Title: phone_dial.py
-# Description: discover strings from phone ial
+# Description: discover strings from phone dial
 #
 from typing import List
 
@@ -68,7 +68,7 @@ class Solution:
             candidates.append(keys[ndx1])
 
         indices = self.sequencer(candidates)  
-        print(indices)
+#        print(indices)
 
         results = []
         for ndx in indices:
@@ -79,6 +79,7 @@ class Solution:
 if __name__ == '__main__':
     solution = Solution()
     print(solution.letterCombinations("237"))
+    #print(solution.letterCombinations("3910057"))
 
 #;;; Local Variables: ***
 #;;; mode:python ***

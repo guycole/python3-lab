@@ -3,6 +3,7 @@
 # Description: summed area table
 # https://medium.com/@anubhavroh/integral-image-141f6181db5e
 # https://stackoverflow.com/questions/2277749/calculate-the-sum-of-elements-in-a-matrix-efficiently
+# https://www.geeksforgeeks.org/submatrix-sum-queries/
 #
 # space complexity is O(m*n) (not understand why having two matrices is not O(2*m*n))
 # time complexity for range sum query is O(1)
