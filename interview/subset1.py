@@ -1,18 +1,24 @@
 #
-# Title: permute1.py
-# Description: how many permutations
+# Title: subset1.py
+# Description: how many subsets
 #
 
 def recurser(original, answer, current, index):
     # print(current)
-    if (index > len(original)):
+    if index > len(original):
         return
 
     answer.append(current[:])
+    #print(answer)
 
     for ndx in range(index, len(original)):
-        if (original[ndx] not in current):
+        #print(f"{index} {len(original)}")
+        if original[ndx] in current:
+            pass
+        #    print(f"skipping {ndx}")
+        else:
             current.append(original[ndx])
+        #    print(f"-->{original[ndx]} {current}")
             recurser(original, answer, current, ndx)
             current.pop()
             
