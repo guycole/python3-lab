@@ -7,8 +7,10 @@ from typing import List
 class Solution:
     def converter(self, candidates: List[str], indices: List[int]) -> str:
         result = ""
+
         for ndx1 in range(len(indices)):
             result = result + candidates[ndx1][indices[ndx1]]
+
         return result
     
     def sequencer(self, candidates: List[str]) -> List[int]:
@@ -55,7 +57,7 @@ class Solution:
         return indices
 
     def letterCombinations(self, digits: str) -> List[str]:
-        keys = {"2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
+        keys = {"0": "", "1":"", "2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
 
         if len(digits) < 1:
             return []
@@ -65,21 +67,26 @@ class Solution:
 
         candidates = []
         for ndx1 in list(digits):
-            candidates.append(keys[ndx1])
+            if len(keys[ndx1]) > 0:
+                candidates.append(keys[ndx1])
 
         indices = self.sequencer(candidates)  
 #        print(indices)
 
         results = []
         for ndx in indices:
-            results.append(self.converter(candidates, ndx))
+            temp = self.converter(candidates, ndx)
+            if temp not in results:
+                results.append(temp)
         
         return results
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.letterCombinations("237"))
+    #print(solution.letterCombinations("2"))
+    #print(solution.letterCombinations("234"))
     #print(solution.letterCombinations("3910057"))
+    print(solution.letterCombinations("4085936964"))
 
 #;;; Local Variables: ***
 #;;; mode:python ***
