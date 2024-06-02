@@ -72,13 +72,16 @@ class Solution:
 
         indices = self.sequencer(candidates)  
 #        print(indices)
+#        print(len(indices))
 
         results = []
         for ndx in indices:
             temp = self.converter(candidates, ndx)
             if temp not in results:
                 results.append(temp)
-        
+
+        print(len(results))
+
         return results
 
 if __name__ == '__main__':
@@ -86,7 +89,8 @@ if __name__ == '__main__':
     #print(solution.letterCombinations("2"))
     #print(solution.letterCombinations("234"))
     #print(solution.letterCombinations("3910057"))
-    print(solution.letterCombinations("4085936964"))
+    results = solution.letterCombinations("4085936964")
+    #print(results)
 
 #;;; Local Variables: ***
 #;;; mode:python ***

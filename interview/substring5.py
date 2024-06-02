@@ -31,6 +31,10 @@ class Solution:
                 elements[tokens[ndx1]] = ndx1
                 ndx1 = ndx1 + 1
 
+        if len(elements) > max_substring_length:
+            max_substring_length = len(elements)
+            max_substring_ndx = len(tokens) - len(elements)
+
         return candidate[max_substring_ndx:max_substring_ndx+max_substring_length]
 
     # brute force o(n^2)
@@ -66,6 +70,8 @@ if __name__ == '__main__':
 
     solution = Solution()
     print(solution.execute2("abcdeab"))
+    print(solution.execute2("abcdeabxyzw"))
+    print(solution.execute2("abcdefghi"))
 #    print(solution.execute1("abcdeabcdefab"))
 #    print(solution.execute1("abcabcbb"))
 

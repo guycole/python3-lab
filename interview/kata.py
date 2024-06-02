@@ -46,8 +46,8 @@ class Solution:
 
         # read a file
         try:
-            with open("json_reader.json", "r") as file:
-                print(file.read())
+            with open("json_reader.json", "r") as infile:
+                print(infile.read())
         except Exception as error:
                 print(error)
 
@@ -57,6 +57,9 @@ class Solution:
         print("execute")
 
         self.kata()
+
+        # use substring5.py example
+        # use subset1.py example
 
         return
 
