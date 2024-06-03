@@ -1,6 +1,6 @@
 #
 # Title: mex_array.py
-# Description: 
+# Description: minimal excluded array
 # 
 # https://www.geeksforgeeks.org/construct-mex-array-from-the-given-array/
 # https://cp-algorithms.com/sequences/mex.html#:~:text=Given%20an%20array%20%24A%24%20of,the%20MEX%20(minimal%20excluded).
@@ -53,11 +53,12 @@ if __name__ == '__main__':
     print("main")
 
     solution = Solution()
-    solution.execute([2, 1, 5, 3])
-    solution.execute([1, 9, 2, 4])
-    solution.execute([0, 1, 2, 4, 5])
-    solution.execute([0, 1, 2, 3, 4])
-    solution.execute([1, 2, 3, 4, 5])
+    solution.execute([2, 1, 5, 3]) # 2143
+    solution.execute([1, 9, 2, 4]) # 1323
+    solution.execute([1, 0, 2, 4]) # 1023
+#    solution.execute([0, 1, 2, 4, 5])
+#    solution.execute([0, 1, 2, 3, 4])
+#    solution.execute([1, 2, 3, 4, 5])
 
 #;;; Local Variables: ***
 #;;; mode:python ***
