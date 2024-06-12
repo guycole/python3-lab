@@ -4,16 +4,15 @@
 # 
 #
 
-from typing import Dict
-
-
 class Solution:
 
     def kata(self) -> None:
         print("kata")
 
-        # visit each pair of targets
+        # initialize array
+        dummy = [0] * 10
 
+        # visit each pair of targets
         targets = ['a', 'b', 'c']
 
         for ndx1 in range(len(targets)):
@@ -28,6 +27,12 @@ class Solution:
         revtargets = targets[::-1]
         print(revtargets)
         print(revtargets[::-1])
+
+        buffer = []
+        for ndx1 in range(len(targets)-1, -1, -1):
+            buffer.append(targets[ndx1])
+        
+        print(buffer)
 
         # list comprehension
         lc = [x*x for x in range(10) if x % 2 == 0]
@@ -50,6 +55,16 @@ class Solution:
                 print(infile.read())
         except Exception as error:
                 print(error)
+
+        # 2d array
+        matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        print(matrix)
+
+        for row in range(len(matrix)):
+            for col in range(len(matrix[row])):
+                print(matrix[row][col], end=" ")
+
+            print()
 
         return
 

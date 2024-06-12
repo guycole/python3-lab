@@ -28,19 +28,27 @@ def matcher(s, t: str) -> str:
     # print(candidates)
 
     result = None
+
     for ndx3 in candidates:
         if len(ndx3) < len(t):
             continue
 
-        satisfied = True
-        for el in t_set:
-            if el in ndx3:
-                continue
+        if t_set.issubset(ndx3): 
+            if result is None:
+                result = ndx3
             else:
-                satisfied = False
-
-        if satisfied is True and (result is None or len(result) > len(ndx3)):
-            result = ndx3
+                if len(result) > len(ndx3):
+                    result = ndx3
+        
+#        satisfied = True
+#        for el in t_set:
+#            if el in ndx3:
+#                continue
+#            else:
+#                satisfied = False
+#
+#        if satisfied is True and (result is None or len(result) > len(ndx3)):
+#            result = ndx3
 
     return result
 
