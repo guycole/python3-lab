@@ -57,8 +57,10 @@ class Solution:
                 print(error)
 
         # 2d array
-        matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        matrix = [[1, 2, 3], [4, 5, 6]]
         print(matrix)
+        print(len(matrix)) # returns row population
+        print(len(matrix[0])) # returns column population
 
         for row in range(len(matrix)):
             for col in range(len(matrix[row])):
