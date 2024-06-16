@@ -1,7 +1,8 @@
 #
 # Title: 3sum_improved.py
 # Description: discover a triplet which matches the target sum
-#
+# this uses memento to store the index of each candidate
+# calculate missing difference and consult dictionary
 
 from typing import List
 

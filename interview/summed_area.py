@@ -5,7 +5,7 @@
 # https://stackoverflow.com/questions/2277749/calculate-the-sum-of-elements-in-a-matrix-efficiently
 # https://www.geeksforgeeks.org/submatrix-sum-queries/
 #
-# space complexity is O(m*n) (not understand why having two matrices is not O(2*m*n))
+# space complexity is O(m*n)
 # time complexity for range sum query is O(1)
 # time complexity for updating value is O(m*n)
 #

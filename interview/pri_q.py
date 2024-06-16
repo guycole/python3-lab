@@ -4,15 +4,15 @@
 #
 # https://realpython.com/python-heapq-module/
 #
-
-# heapq O(log n)
+# heapq is a minheap O(log n)
 import heapq
 
 # read as priority, name 
 students = [(5,'Rina'),(1,'Anish'),(3,'Moana'),(2,'Cathy'),(4,'Lucy')] 
 print(students)
 
-heapq.heapify(students) 
+heapq.heapify(students) # O(n) minheap
+print(students)
 
 print(heapq.heappop(students))
 print(heapq.heappop(students))

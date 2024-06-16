@@ -6,6 +6,9 @@
 #
 # https://realpython.com/python-heapq-module/
 # https://www.baeldung.com/cs/heap-vs-binary-search-tree
+#
+# heapq is a minheap
+
 
 def insert(fresh, candidates):
     print(candidates)

@@ -1,5 +1,5 @@
 #
-# Title: heap_sort.py
+# Title: heap_sort1.py
 # Description: build heap then remove in order
 # time complexity O(n logn) slower than quickwortt
 # space complexity O(1)
@@ -7,6 +7,10 @@
 # 1. build max heap
 # 2. extract element from heap in sorted order
 #
+# to pull off by rank/level
+# 1. build max heap
+# 2. max[0] is row zero, 1, 2, 4, 8, 16...
+# 3. row[1] is row
 
 
 class Solution:
@@ -63,8 +67,8 @@ if __name__ == '__main__':
 
     solution = Solution()
     solution.execute([12, 3, 9, 14, 10, 18, 8, 23])
-
-    heap = [4, 3, 1, 0, 2]
+    solution.execute([4, 3, 1, 0, 2])
+        
 
 #;;; Local Variables: ***
 #;;; mode:python ***

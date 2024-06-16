@@ -6,53 +6,58 @@
 # pivot element is crucial to performance
 # recursively sort the sub arrays (bad for large array)
 # recursion stop when sub array has < 2 elements
-# average time complexity O(n logn) worst is O(n^2) when pivot is smallest or largest element
+# average time complexity O(n log n) 
+# worst is O(n^2) when pivot is smallest or largest element
+# bad for sorted lists (try insertion sort)
 # space complexity O(log n) for recursion worst is O(n)
 #
 
 
 class Solution:
+
+    def swap(self, array:list[int], ii:int, jj:int) -> None:
+        array[ii], array[jj] = array[jj], array[ii]
+
+    # pivot is O(n)
+    def pivot(self, array:list[int], low_ndx:int, high_ndx:int) -> int:
+        swap_ndx = low_ndx
+
+        for ii in range(low_ndx+1, high_ndx+1):
+            if array[ii] < array[low_ndx]:
+                swap_ndx += 1
+                self.swap(array, swap_ndx, ii)
+
+        self.swap(array, low_ndx, swap_ndx)
+
+        return swap_ndx
+
+    # quick_sort is O(n log n)
+    def quick_sort(self, array:list[int], low_ndx:int, high_ndx:int) -> None:
+        if low_ndx < high_ndx:
+            pivot_ndx = self.pivot(array, low_ndx, high_ndx)
+            self.quick_sort(array, low_ndx, pivot_ndx-1)
+            self.quick_sort(array, pivot_ndx+1, high_ndx)
+
+
+    def execute(self, array: list[int]) -> list[int]:
+        print(f"execute {array}")
+
+        low_ndx = 0
+        high_ndx = len(array)-1
  
-    # returns partition index
-    def partition(self, array:list[int], low:int, high:int) -> int:
-        pivot = array[high] # last element
-        print(f"pivot {pivot} {low} {high}")
+        self.quick_sort(array, low_ndx, high_ndx)
 
-        ii = low - 1
-        for jj in range(low, high):
-            if array[jj] <= pivot:
-                # move to left partition
-                ii += 1
-                array[ii], array[jj] = array[jj], array[ii]
-                print(f"swap ii and jj {ii} {jj} {array}")
-
-        # move pivot to correct position
-        array[ii + 1], array[high] = array[high], array[ii + 1]
-
-        # return pivot index
-        return ii + 1
-
-    def quick_sort(self, candidates:list[int], low:int, high:int) -> None:
-        if low < high:
-            pivot = self.partition(candidates, low, high)
-            self.quick_sort(candidates, low, pivot - 1)
-            self.quick_sort(candidates, pivot + 1, high)
-
-    def execute(self, candidates: list[int]) -> list[int]:
-        print(f"execute {candidates}")
-
-        low = 0
-        high = len(candidates) - 1
- 
-        self.quick_sort(candidates, low, high)
-
-        return candidates
+        return array
 
 if __name__ == '__main__':
     print("main")
 
     solution = Solution()
-    print(solution.execute([1, 7, 4, 1, 10, 9, -2]))
+    # print(solution.execute([1, 7, 4, 1, 10, 9, -2]))
+    print(solution.execute([4, 6, 1, 7, 3, 2, 5]))
+    print(solution.execute([4, 6, 1, 7, 3, 2, 9]))
+
+    # print(solution.pivot([4, 6, 1, 7, 3, 2, 5], 0, 6))
 
 #;;; Local Variables: ***
 #;;; mode:python ***

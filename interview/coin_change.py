@@ -4,9 +4,6 @@
 # 
 # 2332
 
-from typing import Dict
-
-
 class Solution:
 
     def execute(self, amount: float) -> str:

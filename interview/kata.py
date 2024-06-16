@@ -1,7 +1,7 @@
 #
 # Title: kata.py
-# Description: 
-# 
+# Description: interview drill 
+# 5 minutes to replicate from memory
 #
 
 from typing import Dict
@@ -12,10 +12,9 @@ class Solution:
     def kata(self) -> None:
         print("kata")
 
-        # visit each pair of targets
-
         targets = ['a', 'b', 'c']
 
+        # visit each pair of targets
         for ndx1 in range(len(targets)):
             for ndx2 in range(ndx1+1, len(targets)):
                 print(f"{targets[ndx1]}, {targets[ndx2]}")    
@@ -28,6 +27,17 @@ class Solution:
         revtargets = targets[::-1]
         print(revtargets)
         print(revtargets[::-1])
+
+        # reverse a string/list
+        revbuffer = []
+        revtargets = []
+        for temp in targets:
+            revbuffer.append(temp)
+        
+        for ndx1 in range(len(targets)):
+            revtargets.append(revbuffer.pop())
+
+        print(revtargets)
 
         # list comprehension
         lc = [x*x for x in range(10) if x % 2 == 0]
