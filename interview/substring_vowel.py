@@ -12,6 +12,36 @@
 
 class Solution:
 
+    def works(self, word: str) -> int:
+        vowels = {"a", "e" , "i", "o", "u"}
+
+        if len(word) < len(vowels):
+            return 0
+
+        candidates = []
+        for ndx1 in range(len(word)):
+            for ndx2 in range(ndx1+1, len(word)):
+                temp = word[ndx1:ndx2+1]
+                if len(temp) < len(vowels):
+                    continue
+
+                test = vowels.symmetric_difference(temp)
+                if len(test) == 0:
+                    candidates.append(temp)
+            
+        print(candidates)
+
+        return len(candidates)
+
+    def window(self, word: str) -> int:
+        vowels = {"a", "e" , "i", "o", "u"}
+
+        if len(word) < len(vowels):
+            return 0
+
+        left = 0
+        right = len(word) - len(vowels)
+
     def countVowelSubstrings(self, word: str) -> int:
         vowel_set = {"a", "e", "i", "o", "u"}
 

@@ -4,14 +4,15 @@
 # 5 minutes to replicate from memory
 #
 
-from typing import Dict
-
-
 class Solution:
 
     def kata(self) -> None:
         print("kata")
 
+        # initialize array
+        dummy = [0] * 10
+
+        # demo list
         targets = ['a', 'b', 'c']
 
         # visit each pair of targets
@@ -20,8 +21,7 @@ class Solution:
                 print(f"{targets[ndx1]}, {targets[ndx2]}")    
 
         # make string from list
-        yy = "".join(targets)
-        print(yy)
+        print("".join(targets))
 
         # reverse a string/list
         revtargets = targets[::-1]
@@ -29,15 +29,11 @@ class Solution:
         print(revtargets[::-1])
 
         # reverse a string/list
-        revbuffer = []
-        revtargets = []
-        for temp in targets:
-            revbuffer.append(temp)
+        buffer = []
+        for ndx1 in range(len(targets)-1, -1, -1):
+            buffer.append(targets[ndx1])
         
-        for ndx1 in range(len(targets)):
-            revtargets.append(revbuffer.pop())
-
-        print(revtargets)
+        print(buffer)
 
         # list comprehension
         lc = [x*x for x in range(10) if x % 2 == 0]
@@ -60,6 +56,18 @@ class Solution:
                 print(infile.read())
         except Exception as error:
                 print(error)
+
+        # 2d array
+        matrix = [[1, 2, 3], [4, 5, 6]]
+        print(matrix)
+        print(len(matrix)) # returns row population
+        print(len(matrix[0])) # returns column population
+
+        for row in range(len(matrix)):
+            for col in range(len(matrix[row])):
+                print(matrix[row][col], end=" ")
+
+            print()
 
         return
 
