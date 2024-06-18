@@ -6,6 +6,7 @@
 #
 # there is a "binarytree" module
 #
+import queue
 
 class Node:
     def __init__(self, value):
@@ -99,6 +100,29 @@ class BinTree:
         if current.right is not None:
             self.inorder(current.right)
 
+    def breadth_first(self, root):
+        qq = queue.Queue()
+        qq.put(root)
+
+        current = None
+        while not qq.empty():
+            current = qq.get()
+            print(current.value)
+
+            if current.left:                  
+                qq.put(current.left)
+            if current.right:
+                qq.put(current.right)
+
+    # only one node has height one
+    def height(self, root):
+        if root is None:
+            return 0
+        else:
+            height = 1 + max(bintree.height(root.left), bintree.height(root.right))
+
+        return height
+
 print('start')
 if __name__ == '__main__':
     print('main')
@@ -110,6 +134,7 @@ if __name__ == '__main__':
     bintree.insert(9)
     bintree.insert(7)
     bintree.insert(4)
+    bintree.insert(6)
     print(bintree)
 
     xx = bintree.find(7)
@@ -122,5 +147,11 @@ if __name__ == '__main__':
 
     print("-x- inorder -x-")
     bintree.inorder(bintree.root)
+
+    print("-x- breadth first -x-")
+    bintree.breadth_first(bintree.root)
+ 
+    print("-x- height -x-")
+    print(bintree.height(bintree.root))
 
 print('stop')
