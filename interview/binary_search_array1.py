@@ -1,5 +1,5 @@
 #
-# Title: binary_search.py
+# Title: binary_search1.py
 # Description: 
 # binary search requires sorted array 
 # runtime O(log n)
@@ -21,10 +21,10 @@ class Solution:
                 flag = False
             elif target < array[middle]:
                 right = middle - 1
-                middle = (left + right) // 2
             else:
                 left = middle + 1
-                middle = (left + right) // 2
+
+            middle = (left + right) // 2
 
             if left > right:
                 flag = False    
