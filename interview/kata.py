@@ -12,6 +12,11 @@ class Solution:
         # initialize array
         dummy = [0] * 10
 
+        # shallow list copy
+        dummy2 = dummy[:] # slicing
+        dummy3 = dummy.copy()
+        dummy4 = list(dummy)
+
         # demo list
         targets = ['a', 'b', 'c']
 
