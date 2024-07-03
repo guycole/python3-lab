@@ -2,7 +2,6 @@
 # Title: phone_dial.py
 # Description: discover strings from phone dial
 #
-from typing import List
 
 class Solution:
     def converter(self, candidates: List[str], indices: List[int]) -> str:
@@ -56,7 +55,7 @@ class Solution:
 
         return indices
 
-    def letterCombinations(self, digits: str) -> List[str]:
+    def letterCombinations(self, digits: str) -> list[str]:
         keys = {"0": "", "1":"", "2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
 
         if len(digits) < 1:
@@ -65,31 +64,52 @@ class Solution:
         if len(digits) < 2:
             return(list(keys[digits[0]]))
 
-        candidates = []
-        for ndx1 in list(digits):
-            if len(keys[ndx1]) > 0:
-                candidates.append(keys[ndx1])
+        digitz = []
+        characterz = []
+        for ndx1 in range(len(digits)):
+            temp = keys[digits[ndx1]]
+            if len(temp) > 0:
+                digitz.append(digits[ndx1])
+                characterz.append(temp)
 
-        indices = self.sequencer(candidates)  
+        indicez = [0] * len(digitz)
+
+        print(digitz)
+        print(indicez)
+        print(characterz)
+
+#        indices = []
+#        for ndx1 in range(len(digits)):
+#            indices.append(0)
+
+
+#        candidates = []
+#        for ndx1 in list(digits):
+#            if len(keys[ndx1]) > 0:
+#                candidates.append(keys[ndx1])
+
+#        print(candidates)
+
+#        indices = self.sequencer(candidates)  
 #        print(indices)
 #        print(len(indices))
 
         results = []
-        for ndx in indices:
-            temp = self.converter(candidates, ndx)
-            if temp not in results:
-                results.append(temp)
+#        for ndx in indices:
+#            temp = self.converter(candidates, ndx)
+#            if temp not in results:
+#                results.append(temp)
 
-        print(len(results))
+#        print(len(results))
 
         return results
 
 if __name__ == '__main__':
     solution = Solution()
     #print(solution.letterCombinations("2"))
-    #print(solution.letterCombinations("234"))
+    print(solution.letterCombinations("234"))
     #print(solution.letterCombinations("3910057"))
-    results = solution.letterCombinations("4085936964")
+    #results = solution.letterCombinations("4085936964")
     #print(results)
 
 #;;; Local Variables: ***

@@ -62,7 +62,10 @@ class BinTree:
 
     def find(self, target):
         current = self.root
-        while current.value != target:
+        while current is not None: 
+            if current.value == target:
+                print("matched")
+                return current
             if target < current.value:
                 print("left")
                 current = current.left
@@ -70,17 +73,19 @@ class BinTree:
                 print("right")
                 current = current.right
 
-        print("matched")
-        return current
+        print("match failure")
+        return None
 
     def preorder(self, current):
         print(current.value)
 
         if current.left is not None:
             self.preorder(current.left)
-
+        
         if current.right is not None:
             self.preorder(current.right)
+        
+#        print(f"pop {current.value}")
 
     def postorder(self, current):
         if current.left is not None:
@@ -100,6 +105,8 @@ class BinTree:
         if current.right is not None:
             self.inorder(current.right)
 
+#        print(f"pop {current.value}")
+
     def breadth_first(self, root):
         qq = queue.Queue()
         qq.put(root)
@@ -115,11 +122,13 @@ class BinTree:
                 qq.put(current.right)
 
     # only one node has height one
+    # find deepest node and count to root
     def height(self, root):
         if root is None:
             return 0
         else:
             height = 1 + max(self.height(root.left), self.height(root.right))
+#            print(f"height {height} {root}")
 
         return height
 
@@ -138,6 +147,7 @@ if __name__ == '__main__':
     print(bintree)
 
     xx = bintree.find(7)
+    xx = bintree.find(44)
 
     print("-x- preorder -x-")
     bintree.preorder(bintree.root)
