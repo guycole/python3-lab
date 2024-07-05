@@ -74,10 +74,10 @@ class BinTree:
         return current
 
     def preorder(self, current):
+        print(current.value)
+
         if current.left is not None:
             self.preorder(current.left)
-
-        print(current.value)
 
         if current.right is not None:
             self.preorder(current.right)
@@ -150,7 +150,7 @@ if __name__ == '__main__':
 
     print("-x- breadth first -x-")
     bintree.breadth_first(bintree.root)
- 
+
     print("-x- height -x-")
     print(bintree.height(bintree.root))
 
