@@ -44,15 +44,15 @@ class Solution:
         lc = [x*x for x in range(10) if x % 2 == 0]
         print(lc)
 
-        dd = {
-            'a': 1,
-            'b': 2,
-            'c': 3,
-            'd': 2
-        }
-
+        dd = {'a': 1, 'b': 2, 'c': 3, 'd': 2}
         print(dd)
+
+        # select keys with value 2
         results = [key for key, value in dd.items() if value == 2]
+        print(results)
+
+        # sort dictionary by value, returns list of tuples
+        results = sorted(dd.items(), key=lambda x: x[1])
         print(results)
 
         # read a file
@@ -60,7 +60,7 @@ class Solution:
             with open("json_reader.json", "r") as infile:
                 print(infile.read())
         except Exception as error:
-                print(error)
+            print(error)
 
         # 2d array
         matrix = [[1, 2, 3], [4, 5, 6]]
