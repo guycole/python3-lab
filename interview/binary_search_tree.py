@@ -119,7 +119,7 @@ class BinTree:
         if root is None:
             return 0
         else:
-            height = 1 + max(bintree.height(root.left), bintree.height(root.right))
+            height = 1 + max(self.height(root.left), self.height(root.right))
 
         return height
 
