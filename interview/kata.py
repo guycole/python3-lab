@@ -55,7 +55,7 @@ class Solution:
         results = [key for key, value in dd.items() if value == 2]
         print(results)
 
-        # sort dictionary by value, returns dictionary
+        # dictionary comprehension to sort dictionary by descending value
         results = {key: value for key, value in sorted(dd.items(), key=lambda item: item[1], reverse=True)}
         print(results)
 
@@ -63,7 +63,7 @@ class Solution:
         for key in results.keys():
             print(f"{key} {results[key]}")
 
-        # sort dictionary by value, returns list of tuples
+        # sort dictionary by value, returns list of tuples by descending value
         results = sorted(dd.items(), key=lambda x: x[1], reverse=True)
         print(results)
 
