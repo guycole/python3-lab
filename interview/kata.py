@@ -47,12 +47,12 @@ class Solution:
         dd = {'a': 1, 'b': 2, 'c': 3, 'd': 2}
         print(dd)
 
+        # iterate for all dictionary keys
+        for key in dd.keys():
+            print(f"{key} {dd[key]}")
+
         # select keys with value 2
         results = [key for key, value in dd.items() if value == 2]
-        print(results)
-
-        # sort dictionary by value, returns list of tuples
-        results = sorted(dd.items(), key=lambda x: x[1], reverse=True)
         print(results)
 
         # sort dictionary by value, returns dictionary
@@ -60,8 +60,12 @@ class Solution:
         print(results)
 
         # iterate for all dictionary keys
-        for key in dd.keys():
-            print(f"{key} {dd[key]}")
+        for key in results.keys():
+            print(f"{key} {results[key]}")
+
+        # sort dictionary by value, returns list of tuples
+        results = sorted(dd.items(), key=lambda x: x[1], reverse=True)
+        print(results)
 
         # read a file
         try:
