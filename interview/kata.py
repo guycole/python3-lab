@@ -55,6 +55,10 @@ class Solution:
         results = sorted(dd.items(), key=lambda x: x[1], reverse=True)
         print(results)
 
+        # sort dictionary by value, returns dictionary
+        results = {key: value for key, value in sorted(dd.items(), key=lambda item: item[1], reverse=True)}
+        print(results)
+
         # iterate for all dictionary keys
         for key in dd.keys():
             print(f"{key} {dd[key]}")

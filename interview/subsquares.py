@@ -23,9 +23,9 @@ def matcher(candidate):
 
             if raw_square[ii][jj] == 0:
                 for ndx1 in range(candidate-1):
-                    for ndx2 in range(candidate-1):
+                     for ndx2 in range(candidate-1):
                         print(f"ndx1:{ndx1} ndx2:{ndx2}")
-                        if raw_square[ii+ndx1][jj+ndx2] != 0:
+                         if raw_square[ii+ndx1][jj+ndx2] != 0:
                             print("degenerate3")
                             continue
 
