@@ -52,8 +52,12 @@ class Solution:
         print(results)
 
         # sort dictionary by value, returns list of tuples
-        results = sorted(dd.items(), key=lambda x: x[1])
+        results = sorted(dd.items(), key=lambda x: x[1], reverse=True)
         print(results)
+
+        # iterate for all dictionary keys
+        for key in dd.keys():
+            print(f"{key} {dd[key]}")
 
         # read a file
         try:
