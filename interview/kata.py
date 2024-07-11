@@ -41,7 +41,7 @@ class Solution:
         print(buffer)
 
         # list comprehension
-        lc = [x*x for x in range(10) if x % 2 == 0]
+        lc = [x*x for x in range(11) if x % 2 == 0]
         print(lc)
 
         dd = {'a': 1, 'b': 2, 'c': 3, 'd': 2}
@@ -51,15 +51,23 @@ class Solution:
         for key in dd.keys():
             print(f"{key} {dd[key]}")
 
-        # select keys with value 2
-        results = [key for key, value in dd.items() if value == 2]
-        print(results)
+        # iterate for all dictonary key, value pairs
+        for key, value in dd.items():
+            print(f"key: {key} value: {value}")
+
+        # iterate for all dictionary values
+        for value in dd.values():
+            print(f"{value}")
+
+        # list comprehension to select keys with value 2
+        selected = [key for key, value in dd.items() if value == 2]
+        print(selected)
 
         # dictionary comprehension to sort dictionary by descending value
         results = {key: value for key, value in sorted(dd.items(), key=lambda item: item[1], reverse=True)}
         print(results)
 
-        # iterate for all dictionary keys
+        # iterate for all SORTED dictionary keys
         for key in results.keys():
             print(f"{key} {results[key]}")
 
@@ -88,21 +96,11 @@ class Solution:
 
         return
 
-    def execute(self, file_name: str) -> None:
-        print("execute")
-
-        self.kata()
-
-        # use substring5.py example
-        # use subset1.py example
-
-        return
-
 if __name__ == '__main__':
     print("main")
 
     solution = Solution()
-    solution.execute("json_reader.json")
+    solution.kata()
 
 #;;; Local Variables: ***
 #;;; mode:python ***
