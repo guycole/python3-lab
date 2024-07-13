@@ -51,7 +51,7 @@ class Solution:
         for key in dd.keys():
             print(f"{key} {dd[key]}")
 
-        # iterate for all dictonary key, value pairs
+        # iterate for all dictonary key, value pairs (returns tuple)
         for key, value in dd.items():
             print(f"key: {key} value: {value}")
 
@@ -63,17 +63,19 @@ class Solution:
         selected = [key for key, value in dd.items() if value == 2]
         print(selected)
 
+        # sort dictionary by value, returns list of tuples by descending value
+        # sorted(iterable, key=key, reverse=reverse)
+        results = sorted(dd.items(), key=lambda xx: xx[1], reverse=True)
+        print(f"{results}")
+
         # dictionary comprehension to sort dictionary by descending value
-        results = {key: value for key, value in sorted(dd.items(), key=lambda item: item[1], reverse=True)}
+        # sorted(iterable, key=key, reverse=reverse)
+        results = {key: value for key, value in sorted(dd.items(), key=lambda xx: xx[1], reverse=True)}
         print(results)
 
         # iterate for all SORTED dictionary keys
         for key in results.keys():
             print(f"{key} {results[key]}")
-
-        # sort dictionary by value, returns list of tuples by descending value
-        results = sorted(dd.items(), key=lambda x: x[1], reverse=True)
-        print(results)
 
         # read a file
         try:
