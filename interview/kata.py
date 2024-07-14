@@ -17,6 +17,12 @@ class Solution:
         dummy3 = dummy.copy()
         dummy4 = list(dummy)
 
+        # sorts list in place O(n log n)
+        #list.sort()
+
+        # returns new list O(n log n) timsort
+        # sorted(iterable)
+
         # demo list
         targets = ['a', 'b', 'c']
 
@@ -63,8 +69,8 @@ class Solution:
         selected = [key for key, value in dd.items() if value == 2]
         print(selected)
 
-        # sort dictionary by value, returns list of tuples by descending value
-        # sorted(iterable, key=key, reverse=reverse)
+        # sort dictionary by value, returns list of tuples by descending value returns new list O(n log n)
+        # sorted(iterable, key=key, reverse=reverse) 
         results = sorted(dd.items(), key=lambda xx: xx[1], reverse=True)
         print(f"{results}")
 

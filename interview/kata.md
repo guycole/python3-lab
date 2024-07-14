@@ -18,7 +18,7 @@
 1. 2d Matrix
     - Create, iterate
 ## Problems
-1. Binary search of sorted array (binary_search_array1.py)
+1. Binary search of sorted array (binary_search_array1.py) O(log n)
 1. Single linked list (maintained in ascending order)
 1. Tree traversal (binary_search_tree.py)
     - DFS inorder, height, BFS
@@ -28,3 +28,5 @@
 1. Find largest substring with unique characters
 1. kth larges (not heapq because minheap)
 1. 2 sum (use memento, see 3sum_improved)
+
+Need threads
