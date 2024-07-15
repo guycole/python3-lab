@@ -3,31 +3,15 @@
 # Description: 
 # https://realpython.com/intro-to-python-threading/#producer-consumer-threading
 #
+# Queue and Event (not lock)
+# 
+#
 import concurrent.futures
 import logging
 import queue
 import random
 import threading
 import time
-
-def producer(queue, event):
-    """Pretend we're getting a number from the network."""
-    while not event.is_set():
-        message = random.randint(1, 101)
-        logging.info("Producer got message: %s", message)
-        queue.put(message)
-
-    logging.info("Producer received event. Exiting")
-
-def consumer(queue, event):
-    """Pretend we're saving a number in the database."""
-    while not event.is_set() or not queue.empty():
-        message = queue.get()
-        logging.info(
-            "Consumer storing message: %s (size=%d)", message, queue.qsize()
-        )
-
-    logging.info("Consumer received event. Exiting")
 
 class Pipeline(queue.Queue):
     def __init__(self):
@@ -44,22 +28,39 @@ class Pipeline(queue.Queue):
         self.put(value)
         logging.debug("%s:added %d to queue", name, value)
 
+def producer(pipeline, event):
+    """Pretend we're getting a number from the network."""
+    while not event.is_set():
+        message = random.randint(1, 101)
+        logging.info("producer message: %s", message)
+        pipeline.set_message(message, "producer")
+
+    logging.info("producer received exit event")
+
+def consumer(pipeline, event):
+    """Pretend we're saving a number in the database."""
+    while not event.is_set() or not pipeline.empty():
+        message = pipeline.get_message("consumer")
+        logging.info("consumer message: %s (size=%d)", message, pipeline.qsize())
+
+    logging.info("consumer received exit event")
+
 if __name__ == '__main__':
     print("main")
 
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO, datefmt="%H:%M:%S")
-    logging.getLogger().setLevel(logging.DEBUG)
+#    logging.getLogger().setLevel(logging.DEBUG)
 
     pipeline = Pipeline()
-    event = threading.Event()
+    exit_event = threading.Event()
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-        executor.submit(producer, pipeline, event)
-        executor.submit(consumer, pipeline, event)
+        executor.submit(producer, pipeline, exit_event)
+        executor.submit(consumer, pipeline, exit_event)
 
         time.sleep(0.1)
-        logging.info("Main: about to set event")
-        event.set()
+        logging.info("Main: set exit event")
+        exit_event.set()
 
 #;;; Local Variables: ***
 #;;; mode:python ***
