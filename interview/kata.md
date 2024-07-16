@@ -25,8 +25,7 @@
     - Find lowest common ancestor
 1. Generate all subset of [1, 2, 3] (subset1.py)
 1. Coin change (coin_change.py)
-1. Find largest substring with unique characters
-1. kth larges (not heapq because minheap)
-1. 2 sum (use memento, see 3sum_improved)
-
-Need threads
+1. Find largest substring with unique characters (substring5.py)
+1. kth largest (kth_largest.py)
+1. 2 sum (use memento, see 3sum_improved.py)
+1. Simple threads demo thread_demo.py
