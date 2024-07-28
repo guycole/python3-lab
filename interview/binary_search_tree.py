@@ -137,13 +137,10 @@ if __name__ == '__main__':
     print('main')
 
     bintree = BinTree()
-    bintree.insert(5)
-    bintree.insert(3)
-    bintree.insert(1)
-    bintree.insert(9)
-    bintree.insert(7)
-    bintree.insert(4)
-    bintree.insert(6)
+    candidates = [5, 3, 1, 9, 7, 4, 6]
+    for candidate in candidates:
+        bintree.insert(candidate)
+
     print(bintree)
 
     xx = bintree.find(7)
