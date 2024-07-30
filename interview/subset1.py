@@ -4,23 +4,26 @@
 #
 
 def recurser(original, answer, current, index):
-    # print(current)
+#    print(current)
     if index > len(original):
+        print("max1")
         return
 
-    answer.append(current[:])
+    #answer.append(current[:])
+    answer.append(current.copy())
     #print(answer)
 
     for ndx in range(index, len(original)):
         #print(f"{index} {len(original)}")
         if original[ndx] in current:
             pass
-        #    print(f"skipping {ndx}")
+            #print(f"skipping {ndx} {original[ndx]}")
         else:
             current.append(original[ndx])
         #    print(f"-->{original[ndx]} {current}")
             recurser(original, answer, current, ndx)
-            current.pop()
+            xx = current.pop()
+            print(f"popped {xx} {current}")
             
     return
 

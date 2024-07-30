@@ -29,7 +29,7 @@ class Solution:
         print("".join(targets))
 
         # reverse a string/list
-        revtargets = targets[::-1]
+        revtargets = targets[::-1] # slicing start:stop:step
         print(revtargets)
         print(revtargets[::-1])
 
