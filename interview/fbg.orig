@@ -1,0 +1,74 @@
+# Overview:
+# Write a program, in any language, that will display an ASCII chart given the following data
+# data = {(1,2), (2, 3), (3, 1), (4, 6), (5, 8)}.
+# You should be able to print the surrounding components of the chart and then place an * where 
+# each data point is specified in the data set. You do not need to print the X and Y legends 
+# but that would be helpful. You are given the max x and max y but if you can calculate that 
+# it would be helpful.
+# 
+#  Online auction graph display
+#  x axis is time
+#  y axis is price
+#  Title item
+#  Given a two-dimension array graph the price over time
+# 
+#     +-----+-----+-----+-----+-----+-----+
+#     +                             *     +
+#     +                                   +
+#     +                       *           +
+#   $ +                                   +
+#     +                                   +
+#     +           *                       +
+#     +     *                             +
+#     +                 *                 +
+#     +-----+-----+-----+-----+-----+-----+
+#                time 
+# 
+#   max x = 5
+#   max y = 8
+#   data = {(1,2), (2, 3), (3, 1), (4, 6), (5, 8)}
+
+# (x, y)
+
+from re import X
+
+max_x = 5
+max_y = 8
+tick_val = 5 # dashes to int
+data = {(1,2), (2, 3), (3, 1), (4, 6), (5, 8)}
+
+def banner():
+    buffer = ['-'] * (max_x * tick_val * 2 + 2) 
+    for ndx in range(0, len(buffer), tick_val):
+        buffer[ndx] = '+'
+
+    buffer.append('+')
+
+    print(''.join(buffer))
+
+def write_line(buffer:list) -> None:
+    print("+", end=' ')
+    for ndx in range(len(buffer)):
+        print(buffer[ndx], end=' ')
+    
+    print('+')
+
+def solution():
+    banner()
+
+    for ndx in range(max_y, -1, -1):
+        buffer = [' '] * max_x * tick_val
+
+        candidates = []
+        for ndx2 in data:
+            row = ndx2[1]
+            col = ndx2[0]
+
+            if row == ndx: # row match?
+                buffer[(col*(tick_val-1))] = '*'
+
+        write_line(buffer)    
+
+    banner()
+
+solution()
