@@ -1,6 +1,8 @@
 # open ai sample
-#
-#
+# binary tree, not binary search tree
+# binary heap, use as priority queue?
+# binary heap implement as array w/children at 2i+1, 2i+2
+# heapsort
 #
 class Node:
     def __init__(self, val=None, left=None, right=None):
