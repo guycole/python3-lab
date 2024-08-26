@@ -1,5 +1,6 @@
 # Python Interview Kata
 ## Basic Kata
+1. What is the difference between __repr__ and __str__?
 1. List
     - Initialize a list
     - Shallow copy a list

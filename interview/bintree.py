@@ -1,28 +1,35 @@
-# binary tree example
+# open ai sample
 #
 #
 #
-class Solution:
+class Node:
+    def __init__(self, val=None, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
-    # tree = [None] * 10
-    tree = []
+    def getsum(self) -> int:
+        sum = 0
 
-    def get_node(self, ndx: int) -> int:
-        return self.tree[ndx]
+        while self.left is not None:
+            self = self.left
+            sum += self.val
 
-    def execute(self, candidates: list[int]) -> int:
-        for ndx1 in candidates:
-            self.tree.append(ndx1)
+        while self.right is not None:
+            self = self.right
+            sum += self.val
 
-        print(self.tree)
+        return sum
+
 
 print('start')
 if __name__ == '__main__':
     print('main')
 
-    candidates = [1, 2, 3, 4, 5, 6]
+    node1 = Node(val=1)
+    node2 = Node(val=2)
+    node3 = Node(val=3, left=node1, right=node2)
 
-    solution = Solution()
-    solution.execute(candidates) 
+    print(node3.getsum()) # 6
 
 print('stop')
