@@ -1,0 +1,86 @@
+""
+A typical iterator supports a single method, __next__(), which returns the next element. For example, in python:
+
+it = iter([1,2,3])
+assert it.__next__() == 1
+assert it.__next__() == 2
+assert it.__next__() == 3
+with pytest.raises(StopIteration):
+    it.__next__()
+However, this gives no way to go backwards to previous states of the iterator. Thus we would like a "resumable iterator" which additionally supports getting and setting state. (This is useful in ML training for saving state of dataset iteration, for example.)
+
+it = resumable_iter([1,2,3])
+assert it.__next__() == 1
+s = it.get_state()
+assert it.__next__() == 2
+assert it.__next__() == 3
+it.set_state(s)  # go back to previous point of iteration!
+assert it.__next__() == 2
+assert it.__next__() == 3
+The important guarantee is that set_state(..) with a prior result of get_state() restores to the previous point in time, replicating that behavior. Essentially, we can move forward in the stream, and we can also move backwards in the stream, but only if we saved the state.
+
+Your task is to:
+
+In your language of choice, write an interface or abstract class for resumable iterators with operations __next__(), get_state(), set_state(s). You do not need to implement the interface.
+Write a test function, e.g. def test_resumable_iterator(it, expected_elements): ... for your new interface exercising the functionality. It should test that iteration works as expected, and that resumption works at every state. The test should pass for any implementation of the interface, with only the assumption that there are only finitely many elements!
+"""
+
+
+from typing import Any
+
+
+class Solution:
+    def __init__(self, args:list):
+        self.args = args
+        self.ndx = 0
+
+    def next(self) -> Any:
+        temp = self.args[self.ndx]
+        self.ndx += 1
+        if self.ndx > len(self.args):
+            raise StopIteration("exhausted")
+        return temp
+    
+    def get_state(self) -> int:
+        return self.ndx
+
+    def set_state(self, ndx:int) -> None:
+        # sanity check, should not be < 0 or exceed list len
+        self.ndx = ndx
+ 
+def test_resumable_iterator(it, expected_elements):
+    temp2 = it.get_state()
+    it.set_state(0)
+    temp3 = it.next()
+    if temp3 != expected_elements[0]:
+        raise Exception("FAIL")
+
+    it.set_state(temp2)
+
+    results = []
+    counter = 1
+
+    try:
+        while True:
+            results.append(it.next())
+            temp = it.get_state()
+            if temp != counter:
+                print(temp)
+                print(counter)
+                raise Exception("FAIL")
+            counter += 1
+
+            it.set_state(temp)
+                
+    except Exception as error:
+        print("exception noted")
+        # list exhausted
+
+    if results == expected_elements:
+        print("test passed")
+    else:
+        print("test failure")
+
+solution = Solution([1, 2, 3])
+test_resumable_iterator(solution, [1, 2, 3])
+

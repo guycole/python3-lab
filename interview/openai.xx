@@ -1,0 +1,57 @@
+class DB:
+#    ...
+#
+#db = DB()
+#db.insert("users", {"id": "1", "name": "Ada", "birthday": "1815-12-10"})
+#db.insert("users", {"id": "2", "name": "Charles", "birthday": "1791-12-26"})
+#db.query("users", ["name"])
+# should return [{"name": "Ada",}, {"name": "Charles"}]
+
+import json
+
+class DB:
+    def __init__(self):
+        self.db = {}
+
+    def insert(self, table_name: str, arg:dict) -> None:
+        #buffer = f"table:'{table_name}', args:{arg}"
+
+        try:
+            if table_name in self.db:
+                self.db[table_name].append(arg)
+            else:
+                self.db[table_name] = [arg]
+        except Exception as error:
+            self.db[table_name] = [arg]
+
+    def query(self, table, arg:list[str]) -> list[dict]:
+        results = []
+        for temp in self.db[table]: # array
+            buffer = {}
+            for ndx in arg: # arg element
+                #print(ndx)  # name               
+                buffer[ndx] = temp[ndx]
+                results.append(buffer)
+
+        return results        
+   
+    def select(self, columns:list[str], table:str, args[list:dict]) -> dict:
+
+        results = {}
+
+        for temp in self.db[table]: # select by table
+            buffer = {}
+            for ndx in temp: # each element in table
+                # needs lambda for args compare
+                if args_match:
+                    # append match for result dictionary
+                    results[ndx] = buffer
+
+        return results
+
+db = DB()
+db.insert("users", {"id": "1", "name": "Ada", "birthday": "1815-12-10"})
+db.insert("users", {"id": "2", "name": "Charles", "birthday": "1791-12-26"})
+print(db.query("users", ["name"]))
+# table name, users, birthday, operator, value
+print(db.select(["name"], "users", [{"birthday", ">", "1800-01-1"}]))
