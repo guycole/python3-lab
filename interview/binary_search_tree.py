@@ -131,6 +131,18 @@ class BinTree:
 #            print(f"height {height} {root}")
 
         return height
+    
+    def lca(self, a, b: int) -> Node:
+        current = self.root
+        while current is not None:
+            if a < current.value and b < current.value:
+                current = current.left
+            elif a > current.value and b > current.value:
+                current = current.right
+            else:
+                return current
+
+        return None
 
 print('start')
 if __name__ == '__main__':
@@ -160,5 +172,10 @@ if __name__ == '__main__':
 
     print("-x- height -x-")
     print(bintree.height(bintree.root))
+
+    print("-x- lca -x-")
+    print(bintree.lca(1, 4)) # 3
+    print(bintree.lca(1, 7)) # 5
+    print(bintree.lca(3, 9)) # 5
 
 print('stop')

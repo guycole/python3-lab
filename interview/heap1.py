@@ -8,6 +8,8 @@
 # https://www.baeldung.com/cs/heap-vs-binary-search-tree
 #
 # heapq is a minheap
+# act like maxheap by multiplying all elements by -1 
+#
 
 
 def insert(fresh, candidates):

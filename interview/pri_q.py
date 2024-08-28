@@ -5,6 +5,8 @@
 # https://realpython.com/python-heapq-module/
 #
 # heapq is a minheap O(log n)
+# can make maxheap by multplying all candidates by -1
+#
 import heapq
 
 # read as priority, name 
