@@ -12,7 +12,7 @@ TARGET=/Users/gsc/Documents/audio-s3sync/choral/wave/a/ac_dc/back_in_black.zip
 /bin/rm -rf choral_wave
 /usr/bin/unzip $TARGET
 #
-if -e choarl_wave/manifest.xml
+if test -f choral_wave/manifest.xml
 then
   source venv/bin/activate
   python ./verifier.py
