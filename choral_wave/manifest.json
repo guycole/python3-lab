@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "title": "A Little South of Sanity",
+  "file-name": "south_of_sanity_d2.zip",
+  "mb-id": "c7b08583-50e9-4652-b821-453e7b65d545",
+  "asin": "B00000DF8I",
+  "duration": 3691795,
+  "release": "1998-11-24",
+  "disc-count": 2,
+  "track-count": 12,
+  "note": "No Note",
+  "format": "CD",
+  "genre": "ROCK",
+  "artist": {
+    "last-name": "Aerosmith",
+    "first-name": "EMPTY_STRING",
+    "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+  },
+  "songs": [
+    {
+      "title": "Eat the Rich",
+      "file-name": "track01.cdda.wav",
+      "mb-id": "4be58f1b-541c-3c6e-b9e4-c7d476d49c87",
+      "duration": 314293,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Love in an Elevator",
+      "file-name": "track02.cdda.wav",
+      "mb-id": "9389e388-ff7b-3366-93fc-ed6ba68d577f",
+      "duration": 355666,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Falling in Love (Is Hard on the Knees)",
+      "file-name": "track03.cdda.wav",
+      "mb-id": "4c68221b-306e-3770-998d-efdf9638486d",
+      "duration": 214266,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Same Old Song and Dance",
+      "file-name": "track04.cdda.wav",
+      "mb-id": "099cba95-fe9a-3eba-a71c-937118eaa20d",
+      "duration": 357573,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Hole in My Soul",
+      "file-name": "track05.cdda.wav",
+      "mb-id": "2e60aec7-909a-3af5-b32d-08047ffaf875",
+      "duration": 340200,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Monkey on My Back",
+      "file-name": "track06.cdda.wav",
+      "mb-id": "8ada80b7-47ff-3cb7-aace-0dd70a540297",
+      "duration": 248466,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Livin\u2019 on the Edge",
+      "file-name": "track07.cdda.wav",
+      "mb-id": "838cbfeb-d056-3319-9fe7-f25252dfb188",
+      "duration": 324093,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Cryin\u2019",
+      "file-name": "track08.cdda.wav",
+      "mb-id": "d62206b0-6da4-3daa-8ca6-8ad33ccd61fe",
+      "duration": 310866,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Rag Doll",
+      "file-name": "track09.cdda.wav",
+      "mb-id": "090df2d1-e7cb-3a71-b4bd-50608e1ab948",
+      "duration": 253573,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Angel",
+      "file-name": "track10.cdda.wav",
+      "mb-id": "fbd8fef1-4251-3fde-879d-bf51a5d298a9",
+      "duration": 335360,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Janie\u2019s Got a Gun",
+      "file-name": "track11.cdda.wav",
+      "mb-id": "277da427-439d-3ebe-8a88-258c2ccb5366",
+      "duration": 314306,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    },
+    {
+      "title": "Amazing",
+      "file-name": "track12.cdda.wav",
+      "mb-id": "f036b534-8900-3472-8401-8bd768c26df0",
+      "duration": 323133,
+      "artist": {
+        "first-name": "EMPTY_STRING",
+        "last-name": "Aerosmith",
+        "mb-id": "3d2b98e5-556f-4451-a3ff-c50ea18d57cb"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "title": "string",
+    "file_name": "string",
+    "mb-id": "string",
+    "asin": "string",
+    "duration": 123, 
+    "release": "1980-07-31",
+    "disc-count": 1,
+    "track-count": 12,
+    "note": "No Note",
+    "format": "CD",
+    "genre": "Rock",
+    "artist": {
+        "last-name": "name",
+        "first-name": "name",
+        "mb-id": "string"
+    }
+    "tracks": [
+        {
+            "disc": 1,
+            "track": 1,
+            "title": "string",
+            "file_name": "string",
+            "mb-id": "string",
+            "duration": 123, 
+            "note": "No Note",
+            "artist": {
+                "last-name": "name",
+                "first-name": "name",
+                "mb-id": "string"
+            }
+        }
+    ]
+}

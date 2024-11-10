@@ -1,7 +1,9 @@
 #
 # Title: model.py
 # Description: 
-# 
+#
+import json
+
 # from bs4 import BeautifulSoup
 import xml.etree.ElementTree as et
 
@@ -17,7 +19,7 @@ class Album:
         self.disc_count = None
         self.track_count = None
         self.active = True
-        self.note = None
+        self.note = "No Note"
         self.format = None
         self.genre = None
         self.artist = None
@@ -37,6 +39,7 @@ class Artist:
 
 class Song:
     def __init__(self, title: str, file_name: str, mb_id: str, duration: int):
+        self.artist = None
         self.title = title
         self.file_name = file_name
         self.mb_id = mb_id
@@ -45,8 +48,82 @@ class Song:
     def __str__(self) -> str:
         return f"Song: {self.title}, {self.duration}, {self.file_name}, {self.mb_id}"
 
-class Parser:
+class JsonParser:
+    def music_brainz_artist(self, raw: str, mb_id: str) -> Artist:
+        first_name = "EMPTY_STRING"
+        last_name = "EMPTY_STRING"
+        mb_id2 = "EMPTY_STRING"
 
+        if raw is not None:
+            tokens = raw.split(",")
+            if len(tokens) > 1:
+                last_name = tokens[0].strip()
+                first_name = tokens[1].strip()
+            else:
+                last_name = raw.strip()
+
+        if mb_id is not None:
+            mb_id2 = mb_id
+
+        return Artist(last_name, first_name, mb_id2)
+
+    def music_brainz_parser(self, outzip: str, buffer: dict) -> Album:
+        album = Album()
+
+        album.version = "1.0"
+        album.title = buffer["title"]
+        album.file_name = outzip
+        album.mb_id = buffer["id"]
+        album.asin = buffer["asin"]
+      #  album.duration = int(buffer["length"])
+        album.release = buffer["date"]
+        album.disc_count = len(buffer["media"])
+        #album.track_count = buffer["media"][0]["track-count"]
+        album.track_count = len(buffer["media"][0]["tracks"])
+        album.format = buffer["media"][0]["format"]
+        album.genre = "Rock"
+
+        artist_credit = buffer["artist-credit"]
+        mb_id = artist_credit[0]["artist"]["id"]
+        name = artist_credit[0]["artist"]["sort-name"]
+
+        artist = Artist(name, "EMPTY_STRING", mb_id)
+        album.artist = artist
+    
+        media = buffer["media"]
+        tracks = media[0]['tracks']
+        for track in tracks:
+            temp = int(track['number'])
+     
+            if album.format == "Digital Media":
+                file_name = f"track{temp:02}.mp3"
+            else:
+                file_name = f"track{temp:02}.cdda.wav"
+
+            song = Song(track['title'], file_name, track['id'], track['length'])
+
+            id = track['artist-credit'][0]['artist']['id']
+            sort_name = track['artist-credit'][0]['artist']['sort-name']
+            song.artist = self.music_brainz_artist(sort_name, id) 
+            album.songs.append(song)
+
+        return album
+
+    def music_brainz_reader(self, file_name: str) -> Album:
+        album = Album()
+
+        buffer = {}
+
+        try:
+            with open(file_name) as infile:
+                buffer = json.load(infile)
+                album = self.music_brainz_parser("fixme", buffer)
+        except Exception as error:
+            print(error)
+
+        return album
+
+class XmlParser:
     def single_element(self, root, key:str) -> str:
         for temp in root.findall(key):
             return temp.text

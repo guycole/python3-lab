@@ -4,10 +4,10 @@
 # 
 import os
 
-from model import Album, Artist, Parser
+from model import Album, Artist, JsonParser, XmlParser
+from reporter import Reporter
 
 class Verifier:
-
     def track_verify(self, album: Album) -> bool:
         retflag = True
 
@@ -23,14 +23,19 @@ class Verifier:
     def execute(self, file_name: str) -> None:
         print("verify: ", file_name)
 
-        parser = Parser()
-        album = parser.reader(file_name)
-        print(f"Album: {album.title}, {album.artist.last_name}, {album.release}")
+#        parser = XmlParser()
+#        album = parser.reader(file_name)
 
-        for song in album.songs:
-            print(f"Song: {song.title}, {song.duration}, {song.file_name}") 
+        reporter = Reporter()
+#        reporter.reporter(album)
 
-        self.track_verify(album)
+        jj = JsonParser()
+        album = jj.music_brainz_reader("bonjovi.json")
+        reporter.reporter(album)
+        datum = reporter.json_manifest(album, "enjoy_sandwich.zip")
+        reporter.write_json_manifest(datum)
+
+# https://musicbrainz.org/ws/2/release/83ff6988-2f79-40b9-82d5-437f2a5da5f3?inc=aliases%2Bartist-credits%2Blabels%2Bdiscids%2Brecordings&fmt=json
 
         return
 
