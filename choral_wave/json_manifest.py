@@ -14,7 +14,6 @@ class JsonManifest:
     def execute(self, target_mb_id: str, outzip: str) -> None:
         url = f"https://musicbrainz.org/ws/2/release/{target_mb_id}?inc=aliases%2Bartist-credits%2Blabels%2Bdiscids%2Brecordings&fmt=json"
         #print(url)
-https://musicbrainz.org/ws/2/release/c7b08583-50e9-4652-b821-453e7b65d545?inc=aliases%2Bartist-credits%2Blabels%2Bdiscids%2Brecordings&fmt=json
         raw = requests.get(url)
         if raw.status_code != 200:
             print(f"error: {raw.status_code}")

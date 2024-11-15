@@ -30,9 +30,9 @@ class Verifier:
 #        reporter.reporter(album)
 
         jj = JsonParser()
-        album = jj.music_brainz_reader("bonjovi.json")
+        album = jj.music_brainz_reader("aerosmith.json")
         reporter.reporter(album)
-        datum = reporter.json_manifest(album, "enjoy_sandwich.zip")
+        datum = reporter.json_manifest(album, "aerosmith.zip")
         reporter.write_json_manifest(datum)
 
 # https://musicbrainz.org/ws/2/release/83ff6988-2f79-40b9-82d5-437f2a5da5f3?inc=aliases%2Bartist-credits%2Blabels%2Bdiscids%2Brecordings&fmt=json

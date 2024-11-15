@@ -78,8 +78,6 @@ class JsonParser:
       #  album.duration = int(buffer["length"])
         album.release = buffer["date"]
         album.disc_count = len(buffer["media"])
-        #album.track_count = buffer["media"][0]["track-count"]
-        album.track_count = len(buffer["media"][0]["tracks"])
         album.format = buffer["media"][0]["format"]
         album.genre = "Rock"
 
@@ -90,22 +88,21 @@ class JsonParser:
         artist = Artist(name, "EMPTY_STRING", mb_id)
         album.artist = artist
     
-        media = buffer["media"]
-        tracks = media[0]['tracks']
-        for track in tracks:
-            temp = int(track['number'])
-     
-            if album.format == "Digital Media":
-                file_name = f"track{temp:02}.mp3"
-            else:
-                file_name = f"track{temp:02}.cdda.wav"
+        album.track_count = 0
+        for media in buffer["media"]:
+            for track in media["tracks"]:
+                album.track_count += 1
+                if album.format == "Digital Media":
+                    file_name = f"track{album.track_count:02}.mp3"
+                else:
+                    file_name = f"track{album.track_count:02}.cdda.wav"
 
-            song = Song(track['title'], file_name, track['id'], track['length'])
+                song = Song(track['title'], file_name, track['id'], track['length'])
 
-            id = track['artist-credit'][0]['artist']['id']
-            sort_name = track['artist-credit'][0]['artist']['sort-name']
-            song.artist = self.music_brainz_artist(sort_name, id) 
-            album.songs.append(song)
+                id = track['artist-credit'][0]['artist']['id']
+                sort_name = track['artist-credit'][0]['artist']['sort-name']
+                song.artist = self.music_brainz_artist(sort_name, id) 
+                album.songs.append(song)
 
         return album
 
