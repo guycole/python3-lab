@@ -76,7 +76,11 @@ class JsonParser:
         album.mb_id = buffer["id"]
         album.asin = buffer["asin"]
       #  album.duration = int(buffer["length"])
-        album.release = buffer["date"]
+        if "date" in buffer:
+            album.release = buffer["date"]
+        else: 
+            album.release = None
+
         album.disc_count = len(buffer["media"])
         album.format = buffer["media"][0]["format"]
         album.genre = "Rock"
@@ -105,9 +109,9 @@ class JsonParser:
                 album.songs.append(song)
 
         return album
-
+    
     def music_brainz_reader(self, file_name: str) -> Album:
-        album = Album()
+        album = None
 
         buffer = {}
 
@@ -115,6 +119,69 @@ class JsonParser:
             with open(file_name) as infile:
                 buffer = json.load(infile)
                 album = self.music_brainz_parser("fixme", buffer)
+        except Exception as error:
+            print(error)
+
+        return album
+
+    def manifest_parser(self, buffer: dict) -> Album:
+        album = Album()
+
+        album.version = buffer["version"]
+        album.title = buffer["title"]
+        album.file_name = buffer["file-name"]
+        album.mb_id = buffer["mb-id"]
+        album.asin = buffer["asin"]
+        album.duration = int(buffer["duration"])
+        album.release = buffer["release"]
+        album.disc_count = int(buffer["disc-count"])
+        album.track_count = int(buffer["track-count"])
+        album.format = buffer["format"]
+        album.genre = buffer["genre"]
+        album.note = buffer["note"]
+
+        artist_first_name = buffer["artist"]["first-name"]
+        artist_last_name = buffer["artist"]["last-name"]
+        artist_mb_id = buffer["artist"]["mb-id"]
+     
+        artist = Artist(artist_last_name, artist_first_name, artist_mb_id)
+        album.artist = artist
+
+        for song in buffer["songs"]:
+            artist = Artist(song['artist']['last-name'], song['artist']['first-name'], song['artist']['mb-id'])
+
+            song = Song(song['title'], song['file-name'], song['mb-id'], int(song['duration']))
+            song.artist = artist
+
+            album.songs.append(song)
+
+#        album.track_count = 0
+#        for media in buffer["media"]:
+#            for track in media["tracks"]:
+#                album.track_count += 1
+#                if album.format == "Digital Media":
+#                    file_name = f"track{album.track_count:02}.mp3"
+#                else:
+#                    file_name = f"track{album.track_count:02}.cdda.wav"
+#
+#                song = Song(track['title'], file_name, track['id'], track['length'])
+#
+#                id = track['artist-credit'][0]['artist']['id']
+#                sort_name = track['artist-credit'][0]['artist']['sort-name']
+#                song.artist = self.music_brainz_artist(sort_name, id) 
+#                album.songs.append(song)
+
+        return album
+
+    def manifest_reader(self, file_name: str) -> Album:
+        album = None
+
+        buffer = {}
+
+        try:
+            with open(file_name) as infile:
+                buffer = json.load(infile)
+                album = self.manifest_parser(buffer)
         except Exception as error:
             print(error)
 

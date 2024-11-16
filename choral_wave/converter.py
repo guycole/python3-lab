@@ -17,7 +17,7 @@ class JsonConverter:
         print(f"{album.file_name} {album.mb_id}")
 
         url = f"https://musicbrainz.org/ws/2/release/{album.mb_id}?inc=aliases%2Bartist-credits%2Blabels%2Bdiscids%2Brecordings&fmt=json"
-        # print(url)
+        #print(url)
         raw = requests.get(url)
         if raw.status_code != 200:
             print(f"error: {raw.status_code}")
