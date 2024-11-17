@@ -9,13 +9,30 @@ from model import Album, Artist, JsonParser, XmlParser
 from reporter import Reporter
 
 class Verifier:
+    def file_name_verify(self, file_name:str, album: Album) -> bool:
+        retflag = True
+
+        # ./r/replacements/all_for_nothing_d1.zip
+
+        tokens = file_name.split("/")
+        target = tokens[-1]
+
+        if album.file_name is None:
+            print("missing file_name")
+            retflag = False
+        elif album.file_name != target:
+            print(f"bad filename {album.file_name} {target}")
+            retflag = False
+
+        return retflag
+
     def mb_id_verify(self, album: Album) -> bool:
         retflag = True
 
         if album.mb_id is None:
             print("missing mb_id")
             retflag = False
-        elif len(album.mb_id) < 36:
+        elif len(album.mb_id) < 7:
             print("missing mb_id")
             retflag = False
 
@@ -52,6 +69,15 @@ class Verifier:
         for song in album.songs:
             target = f"choral_wave/{song.file_name}"
 
+            if album.format == "CD":
+                if not target.endswith("wav"):
+                    print("file name does not end in .wav")
+                    return False
+            elif album.format == "DIGITAL_MEDIA":
+                if not target.endswith("mp3"):
+                    print("file name does not end in .mp3")
+                    return False
+
             if not os.path.exists(target):
                 print(f"file not found: {target}")
                 retflag = False
@@ -69,13 +95,17 @@ class Verifier:
             print("unable to parse chorale_wave/manifest.json")
             return -1
             
-#        if not self.mb_id_verify(album):
-#            print("mb_id verification failed")
-#            return -1
+        if not self.file_name_verify(file_name, album):
+            print("file_name verification failed")
+            return -1
         
-#        if not self.release_verify(album):
-#            print("release verification failed")
-#            return -1
+        if not self.mb_id_verify(album):
+            print("mb_id verification failed")
+            return -1
+        
+        if not self.release_verify(album):
+            print("release verification failed")
+            return -1
         
         if not self.track_verify(album):
             print("track verification failed")
