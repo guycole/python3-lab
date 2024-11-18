@@ -142,7 +142,7 @@ class PageReport():
                 if details[1] not in ndx_dd:
                     ndx_dd[details[1]] = []
 
-                    ndx_dd[details[1]].append(details)
+                ndx_dd[details[1]].append(details)
  
         self.write_index(ndx_dd)
 #
