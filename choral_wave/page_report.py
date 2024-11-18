@@ -103,20 +103,19 @@ class PageReport():
             for element in sorted_ndx:
                 # select by artist
                 temp1 = sorted_ndx[element]
+#                print(temp1)
                 # select each album
                 for temp in temp1:
-                    ndx_file.write(f"      <LI>{temp[1]}, {temp[0]}</LI>\n")
+                    ndx_file.write(f"      <LI>{temp[1]} <A HREF='https://guycole.github.io/python3-lab/{temp[2]}'>{temp[0]}</A></LI>\n")
 
             ndx_file.write("    </OL>\n")
             ndx_file.write("  </BODY>\n")
             ndx_file.write("</HTML>\n")
 
-    def processor(self, target: str):
+    def processor(self, target: str) -> tuple:
         os.chdir("/tmp")
 
         jp = JsonParser()
-
-        ndx_dd = {}
 
         with zipfile.ZipFile(target) as choral_zip:
             with choral_zip.open('choral_wave/manifest.json') as raw_manifest:
@@ -124,13 +123,7 @@ class PageReport():
                 album = jp.manifest_parser(json_manifest)
 
                 album_details = self.build_detail(album)
-
-                if album_details[1] not in ndx_dd:
-                    ndx_dd[album_details[1]] = []
-
-                ndx_dd[album_details[1]].append(album_details)
-               
-#        self.write_index(ndx_dd)
+                return album_details
 
     def execute(self):
         candidates = []
@@ -140,9 +133,18 @@ class PageReport():
                 if file.endswith(".zip"):
                     candidates.append(os.path.join(root, file))
 
-        for candidate in candidates:
-            self.processor(candidate)
+        ndx_dd = {}
 
+        for candidate in candidates:
+            details = self.processor(candidate)
+
+            if details is not None:
+                if details[1] not in ndx_dd:
+                    ndx_dd[details[1]] = []
+
+                    ndx_dd[details[1]].append(details)
+ 
+        self.write_index(ndx_dd)
 #
 if __name__ == '__main__':
     cw_root = "/Users/gsc/documents/audio-s3sync/choral/wave"
