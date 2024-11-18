@@ -18,6 +18,9 @@ class PageReport():
 
     def get_artist_name(self, artist: Artist) -> str:
         if artist.first_name == "EMPTY_STRING":
+            if artist.last_name == "VARIOUS_ARTISTS":
+                return "VariousArtists"
+
             return artist.last_name
         else:
             return f"{artist.last_name}, {artist.first_name}"
@@ -103,7 +106,7 @@ class PageReport():
             for element in sorted_ndx:
                 # select by artist
                 temp1 = sorted_ndx[element]
-#                print(temp1)
+
                 # select each album
                 for temp in temp1:
                     ndx_file.write(f"      <LI>{temp[1]} <A HREF='https://guycole.github.io/python3-lab/{temp[2]}'>{temp[0]}</A></LI>\n")
