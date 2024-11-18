@@ -155,22 +155,6 @@ class JsonParser:
 
             album.songs.append(song)
 
-#        album.track_count = 0
-#        for media in buffer["media"]:
-#            for track in media["tracks"]:
-#                album.track_count += 1
-#                if album.format == "Digital Media":
-#                    file_name = f"track{album.track_count:02}.mp3"
-#                else:
-#                    file_name = f"track{album.track_count:02}.cdda.wav"
-#
-#                song = Song(track['title'], file_name, track['id'], track['length'])
-#
-#                id = track['artist-credit'][0]['artist']['id']
-#                sort_name = track['artist-credit'][0]['artist']['sort-name']
-#                song.artist = self.music_brainz_artist(sort_name, id) 
-#                album.songs.append(song)
-
         return album
 
     def manifest_reader(self, file_name: str) -> Album:
