@@ -38,7 +38,7 @@ if __name__ == '__main__':
         print("use test default")
         outzip = "outfile.zip"
         mb_id = "c5331806-b3fe-42e0-9a55-9f1f99c57c28"
-        mb_id = "ba4a4157-8094-485d-87a7-f564a14780f8"
+        mb_id = "47880bbc-199b-4d5c-99a6-032eb208ffb4"
 
     jm = JsonManifest()
     jm.execute(mb_id, outzip)
