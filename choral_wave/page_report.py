@@ -16,8 +16,38 @@ class PageReport():
         self.cw_root = cw_root
         self.doc_root = doc_root
 
+    def get_artist_name(self, artist: Artist) -> str:
+        if artist.first_name == "EMPTY_STRING":
+            return artist.last_name
+        else:
+            return f"{artist.last_name}, {artist.first_name}"
+
+    def get_detail_filename(self, album: Album) -> str:
+        # has the form artist_album.html
+        artist_name = self.get_artist_name(album.artist)
+        album_name = album.file_name.replace(".zip", "")
+
+        candidate_list = list(f"{artist_name}_{album_name}")
+        result_list = []
+
+        dupe_flag = False
+        for temp in candidate_list:
+            if temp.isalnum():
+                dupe_flag = False
+                result_list.append(temp)
+            else:
+                if dupe_flag == False:
+                    dupe_flag = True
+                    result_list.append("_")
+
+        result = "".join(result_list).lower()
+        result = result + ".html"
+  
+        return result
+
     def write_detail(self, file_name: str, dd: dict):
         full_detail_name = os.path.join(self.doc_root, file_name)
+        print(full_detail_name)
 
         with open(full_detail_name, 'wt') as detail_file:
             detail_file.write("<HTML>\n")
@@ -40,25 +70,21 @@ class PageReport():
             detail_file.write("</HTML>\n")
 
     def build_detail(self, album: Album) -> tuple:
-        artist_name = f"{album.artist.last_name}_{album.artist.first_name}"
-
-        html_name = album.file_name.replace(".zip", ".html")
-
-        detail_name = f"{artist_name}_{html_name}"
-        detail_name = detail_name.lower()
+        detail_filename = self.get_detail_filename(album)
 
         dd = {}
-        dd['artist'] = f"{album.artist.last_name}, {album.artist.first_name}"
+
+        dd['artist'] = self.get_artist_name(album.artist)
         dd['release'] = album.release
         dd['title'] = album.title
         dd['songs'] = []
 
         for song in album.songs:
-            dd['songs'].append(f"{song.title} ({song.artist.last_name}, {song.artist.first_name})")
+            dd['songs'].append(f"{song.title} ({self.get_artist_name(song.artist)})")
 
-        self.write_detail(detail_name, dd)
+        self.write_detail(detail_filename, dd)
 
-        return(album.title, artist_name, detail_name)
+        return(album.title, dd['artist'], detail_filename)
 
     def write_index(self, ndx_dd: dict):
         sorted_ndx = dict(sorted(ndx_dd.items()))
@@ -79,8 +105,6 @@ class PageReport():
                 temp1 = sorted_ndx[element]
                 # select each album
                 for temp in temp1:
-                    print(temp)
-
                     ndx_file.write(f"      <LI>{temp[1]}, {temp[0]}</LI>\n")
 
             ndx_file.write("    </OL>\n")
@@ -94,7 +118,6 @@ class PageReport():
 
         ndx_dd = {}
 
-        print(target)
         with zipfile.ZipFile(target) as choral_zip:
             with choral_zip.open('choral_wave/manifest.json') as raw_manifest:
                 json_manifest = json.loads(raw_manifest.read())
@@ -107,7 +130,7 @@ class PageReport():
 
                 ndx_dd[album_details[1]].append(album_details)
                
-        self.write_index(ndx_dd)
+#        self.write_index(ndx_dd)
 
     def execute(self):
         candidates = []
