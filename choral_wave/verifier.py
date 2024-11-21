@@ -70,7 +70,9 @@ class Verifier:
             target = f"choral_wave/{song.file_name}"
 
             if album.format == "CD":
-                if not target.endswith("wav"):
+                if target.endswith("wav") or target.endswith("ogg"):
+                    pass
+                else:
                     print("file name does not end in .wav")
                     return False
             elif album.format == "DIGITAL_MEDIA":
