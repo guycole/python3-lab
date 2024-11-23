@@ -1,6 +1,6 @@
 #
 # Title: verifier.py
-# Description: 
+# Description: sanity check manifest.json 
 # 
 import os
 import sys

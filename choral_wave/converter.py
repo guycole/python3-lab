@@ -1,6 +1,6 @@
 #
-# Title: json_manifest.py
-# Description: read from music brainz and create json manifest
+# Title: converter.py
+# Description: read manifest.xml and create manifest.json
 # 
 import os
 import requests
