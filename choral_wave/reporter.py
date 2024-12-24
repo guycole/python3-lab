@@ -58,7 +58,11 @@ class Reporter:
             dd_song["title"] = song.title
             dd_song["file-name"] = song.file_name
             dd_song["mb-id"] = song.mb_id
-            dd_song["duration"] = song.duration
+
+            if song.duration is None:
+                dd_song["duration"] = 0
+            else:
+                dd_song["duration"] = song.duration
 
             dd_artist = {}
             dd_artist["first-name"] = song.artist.first_name
@@ -69,7 +73,7 @@ class Reporter:
             
             songs.append(dd_song)
 
-            duration_total += song.duration
+            duration_total += dd_song["duration"]
 
         dd["duration"] = duration_total
         dd["songs"] = songs
