@@ -1,0 +1,15 @@
+--
+-- Title: table1.psql
+-- Description:
+-- 
+create table table1 (
+  id             bigserial    primary key,
+  date_stamp     date	      not null,
+  random_ivalue  int          not null,
+  random_string  varchar(16)  not null,
+  time_stamp1    timestamp    not null,
+  time_stamp2    timestamptz  not null
+);
+
+grant select, insert, update, delete on table1 to lab_client;
+grant usage, select on sequence table1_id_seq to lab_client;

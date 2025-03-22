@@ -1,0 +1,7 @@
+#
+# database connection
+dbConn: "postgresql+psycopg2://lab_client:batabat@localhost:5432/pylab"
+#
+# true, echo SQL statements
+sqlEchoEnable: false
+#

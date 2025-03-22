@@ -1,0 +1,14 @@
+--
+-- Title: table2.psql
+-- Description:
+-- 
+create table table2 (
+  id             bigserial    primary key,
+  random_ivalue  int          not null,
+  random_string  varchar(16)  not null,
+  table1_id      bigint       not null,
+  constraint     table1_id    foreign key(table1_id) references table1(id)
+);
+
+grant select, insert, update, delete on table2 to lab_client;
+grant usage, select on sequence table2_id_seq to lab_client;
